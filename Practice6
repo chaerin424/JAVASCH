@@ -1,0 +1,132 @@
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SpinnerListModel;
+import javax.swing.border.Border;
+
+
+public class Practice6 extends JFrame {
+   String months[] = { "January", "February", "March", "April", "May",
+         "June", "July", "August", "September", "October", "November",
+   "December" };
+   String [] fruits= {"apple", "banana", "kiwi", 
+         "mango", "pear", "peach",
+         "berry", "strawberry", "blackberry"};
+   ImageIcon [] images = { new ImageIcon("images/home.jpg"),
+         new ImageIcon("images/search.jpg"),
+         new ImageIcon("images/wifi.jpg"),
+         new ImageIcon("images/key.jpg") };
+
+   public Practice6(){
+      setTitle("20185479 박채린");
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      Container c = getContentPane();
+      c.setLayout(new FlowLayout());
+
+      //------------------------
+      JButton btn = new JButton("버튼");
+      c.add(btn);
+
+      ImageIcon cherryIcon = new ImageIcon("images/cherry.jpg");
+      ImageIcon selectedCherryIcon = new ImageIcon("images/cherry_off.jpg");
+
+      JCheckBox apple = new JCheckBox("사과");
+      JCheckBox pear = new JCheckBox("배", true);
+      JCheckBox cherry = new JCheckBox("체리");
+      cherry.setIcon(cherryIcon);
+      cherry.setSelectedIcon(selectedCherryIcon);
+
+      c.add(apple);
+      c.add(pear);
+      c.add(cherry);
+
+      //-----------------------------------------------
+      ButtonGroup g = new ButtonGroup();
+
+      JRadioButton apple2 = new JRadioButton("사과");
+      JRadioButton pear2 = new JRadioButton("배", true);
+      JRadioButton cherry2 = new JRadioButton("체리");
+      cherry2.setIcon(cherryIcon);
+      cherry2.setSelectedIcon(selectedCherryIcon);
+
+      g.add(apple2);
+      g.add(pear2);
+      g.add(cherry2);
+
+      c.add(apple2); c.add(pear2); c.add(cherry2);
+
+      //-----------------------------------------------
+      JSlider js = new JSlider(0, 200, 100);
+
+      js.setMajorTickSpacing(50);
+      js.setMinorTickSpacing(10);
+      js.setPaintLabels(true);
+      js.setPaintTicks(true);
+      c.add(js);
+
+      //-----------------------------------------------
+      c.add(new JLabel("이름  : "));
+      c.add(new JTextField(20));
+      c.add(new JLabel("학과  : "));
+      c.add(new JTextField("컴퓨터공학과(수정)", 20));
+      c.add(new JLabel("주소  : "));
+      c.add(new JTextField("서울시 ...", 20));
+
+      //-----------------------------------------------
+      c.add(new JLabel("Enter the password : "));
+      c.add(new JPasswordField(20));
+
+      //-----------------------------------------------
+      c.add(new JLabel("Month : "));
+      SpinnerListModel model = new SpinnerListModel(months);
+      c.add(new JSpinner(model));
+
+      //-----------------------------------------------
+      Border border = BorderFactory.createLineBorder(Color.BLACK);
+      JTextArea jta = new JTextArea("hello", 7, 20);
+      jta.setBorder(border);
+      c.add(jta);
+
+      //-----------------------------------------------
+      c.add(new JComboBox(fruits));
+      c.add(new JComboBox(new String[]{"kitae"}));
+
+      //-----------------------------------------------
+      JList strList = new JList(fruits); // 문자열 리스트 생성
+      c.add(strList);
+
+      JList imageList = new JList(); // 이미지 리스트 생성
+      imageList.setListData(images);
+      c.add(imageList);   
+
+      JList scrollList = new JList(fruits); // 문자열 리스트 생성
+      c.add(new JScrollPane(scrollList)); // 리스트를 JScrollPane에 부착
+
+
+      setSize(700,500);
+      setVisible(true);
+   }
+
+   public static void main(String[] args) {
+      // TODO Auto-generated method stub
+      new Practice6();
+   }
+
+}
